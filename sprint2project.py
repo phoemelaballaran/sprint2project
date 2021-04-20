@@ -60,7 +60,7 @@ if my_page == "Exploring ITZY's Spotify Data":
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     
     st.markdown('<div style="font-size: 25px;font-weight: bold;">ITZY is the 5th most streamed K-Pop girl group</div>',unsafe_allow_html=True)
-    st.markdown('<div style="color: gray; font-size: 18px;font-style: italic;">With 23M total streams for their charting songs</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color: gray; font-size: 18px;">With 23M total streams for their charting songs</div>',unsafe_allow_html=True)
     top5 = df1.groupby('artist')[['streams']].sum().sort_values(by="streams", ascending=False).head(5).reset_index()
     top5.sort_values(by="streams", ascending=True, inplace=True)
     
@@ -88,7 +88,7 @@ if my_page == "Exploring ITZY's Spotify Data":
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     
     st.markdown('<div style="text-align: left;font-size: 25px;font-weight: bold;">Streams for ITZY’s charting songs increase with every EP/album release</div>',unsafe_allow_html=True)
-    st.markdown('<div style="color: gray; font-size: 18px;font-style: italic;">Hover over the plotted line to view the number of streams on a given day</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color: gray; font-size: 15px;font-style: italic;">Hover over the plotted line to view the number of streams on a given day</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     fig = px.line(df0, x='date', y="streams")
 
@@ -188,7 +188,7 @@ if my_page == "Exploring ITZY's Spotify Data":
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.markdown('<div style="text-align: left;color: #C6793A; font-size: large;font-weight: bold;">Note</div>',unsafe_allow_html=True)
+    st.markdown('<div style="font-size: large;font-weight: bold;">Note</div>',unsafe_allow_html=True)
     st.markdown("Italicized parts are directly lifted from Spotify's Web API Reference for developers.")
     st.markdown("""<a style='display: block; color:#77A9B4; text-decoration: none;' href="https://developer.spotify.com/documentation/web-api/reference/#endpoint-get-audio-features"> Access the reference through this link.</a>""", unsafe_allow_html=True)
     
@@ -266,7 +266,7 @@ elif my_page == 'Part 1: Widen Listenership':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('---')
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 20px;">Recommended Pop Artists</div>',unsafe_allow_html=True)
-    st.markdown('<div style="text-align: left; color: gray; font-style: italic;font-size: 17px;">Arranged from lowest to highest cosine distance</div>',unsafe_allow_html=True)
+    st.markdown('<div style="text-align: left; color: gray; font-size: 17px;">Arranged from lowest to highest cosine distance</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     #Pop reco
     a1,a2,a3,a4,a5 = st.beta_columns(5)
@@ -295,7 +295,7 @@ elif my_page == 'Part 1: Widen Listenership':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 20px;">Camila Cabello is the most streamed recommended pop artist</div>',unsafe_allow_html=True)
-    st.markdown('<div style="text-align: left; color: gray; font-style: italic;font-size: 17px;">Based on her charting songs for the period of January 2017 to January 2021</div>',unsafe_allow_html=True)
+    st.markdown('<div style="text-align: left; color: gray; font-size: 17px;">Based on her charting songs for the period of January 2017 to January 2021</div>',unsafe_allow_html=True)
 
     fig = px.bar(df3, x="streams", y="artist", orientation='h', height=350,
                  text=df3["streams"].apply(lambda x: numerize.numerize(x)))
@@ -318,7 +318,7 @@ elif my_page == 'Part 1: Widen Listenership':
         
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 20px;">Recommended R&B Artists</div>',unsafe_allow_html=True)
-    st.markdown('<div style="text-align: left; color: gray; font-style: italic;font-size: 17px;">Arranged from lowest to highest cosine distance</div>',unsafe_allow_html=True)
+    st.markdown('<div style="text-align: left; color: gray; font-size: 17px;">Arranged from lowest to highest cosine distance</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     #R&B Reco
     b1,b2,b3,b4,b5 = st.beta_columns(5)
@@ -347,7 +347,7 @@ elif my_page == 'Part 1: Widen Listenership':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 20px;">Drake is the most streamed recommended R&B artist</div>',unsafe_allow_html=True)
-    st.markdown('<div style="text-align: left; color: gray; font-style: italic;font-size: 17px;">Based on his charting songs for the period of January 2017 to January 2021</div>',unsafe_allow_html=True)
+    st.markdown('<div style="text-align: left; color: gray; font-size: 17px;">Based on his charting songs for the period of January 2017 to January 2021</div>',unsafe_allow_html=True)
 
     fig = px.bar(df4, x="streams", y="artist", orientation='h', height=350,
                  text=df3["streams"].apply(lambda x: numerize.numerize(x)))
@@ -369,7 +369,7 @@ elif my_page == 'Part 1: Widen Listenership':
     st.markdown('---')
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 20px;">Recommended Rap Artists</div>',unsafe_allow_html=True)
-    st.markdown('<div style="text-align: left; color: gray; font-style: italic;font-size: 17px;">Arranged from lowest to highest cosine distance</div>',unsafe_allow_html=True)
+    st.markdown('<div style="text-align: left; color: gray; font-size: 17px;">Arranged from lowest to highest cosine distance</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     #Rap Reco
     d1,d2,d3,d4,d5 = st.beta_columns(5)
@@ -398,7 +398,7 @@ elif my_page == 'Part 1: Widen Listenership':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 20px;">Charlie Puth is the most streamed recommended rap artist</div>',unsafe_allow_html=True)
-    st.markdown('<div style="text-align: left; color: gray; font-style: italic;font-size: 17px;">Based on his charting songs for the period of January 2017 to January 2021</div>',unsafe_allow_html=True)
+    st.markdown('<div style="text-align: left; color: gray; font-size: 17px;">Based on his charting songs for the period of January 2017 to January 2021</div>',unsafe_allow_html=True)
 
     fig = px.bar(df4, x="streams", y="artist", orientation='h', height=350,
                  text=df3["streams"].apply(lambda x: numerize.numerize(x)))
@@ -501,7 +501,7 @@ elif my_page == 'Recommendations':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="font-weight: bold;font-size: 25px;">What musical direction to pursue</div>',unsafe_allow_html=True)
-    st.markdown('<div style="color:gray;font-size: 18px;">ITZY can also base their collaboration decision on the genres\' notable audio features.</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color:gray;font-size: 18px;">ITZY can also base their collaboration decision on the genres\' notable audio features</div>',unsafe_allow_html=True)
     
     colors = ['#C6793A','#77A9B4', '#565B7B','#B88F89']
 
