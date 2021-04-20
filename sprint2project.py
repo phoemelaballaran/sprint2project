@@ -24,7 +24,7 @@ if my_page == 'Client: ITZY':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     st.image('images/ITZY.png',use_column_width=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
-    st.markdown("Our group’s hypothetical client is ITZY’s management team. In this project, we helped ITZY's management team with strategizing on how to make ITZY the next biggest K-Pop girl group. The ways we thought of doing that is by (1) widening their listenership and (2) creating a spotlight on ITZY.")
+    st.markdown("Our group’s hypothetical client is ITZY’s management team. In this project, we helped them with strategizing on how to make ITZY the next biggest K-Pop girl group. The ways we thought of doing that is by (1) widening their listenership and (2) creating a spotlight on ITZY.")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     st.markdown('<div style="text-align: left;font-size: 20px;font-weight: bold;">Who is ITZY?</div>',unsafe_allow_html=True)
@@ -49,6 +49,7 @@ if my_page == "Exploring ITZY's Spotify Data":
 
     df1 = load_data("datasets/kpop_girlgroup_data.csv")
     df2 = load_data("datasets/song characteristics.csv")
+    df0 = load_data("datasets/timeline.csv")
 
     st.title("Exploring ITZY's Spotify Data")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
@@ -87,8 +88,18 @@ if my_page == "Exploring ITZY's Spotify Data":
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     
     st.markdown('<div style="text-align: left;font-size: 25px;font-weight: bold;">Streams for ITZY’s charting songs increase with every EP/album release</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color: gray; font-size: 18px;font-style: italic;">Hover over the plotted line to view the number of streams on a given day</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.image('images/Time Series ITZY.png',use_column_width=True)
+    fig = px.line(df0, x='date', y="streams")
+
+    fig.update_traces(line=dict(color='#B88F89', width=2))
+    fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
+                      xaxis = {'title': 'Date', 'titlefont' : dict(size = 16)},
+                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16)},
+                      margin=dict(l=5, r=5, b=5, t=25, pad=15), font=dict(size=14),
+                      hoverlabel = dict(font=dict(color='white'))
+                         )
+    st.plotly_chart(fig, use_container_width=True)
     st.markdown("Through our further EDA, we saw that the streams for ITZY’s charting songs increase with every EP or album release. That got us wondering what is it about ITZY’s songs that made people want to listen to them? What’s their difference with the other K-Pop girl groups mentioned earlier?")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
@@ -489,9 +500,8 @@ elif my_page == 'Recommendations':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.markdown('<div style="text-align: left; font-weight: bold;font-size: 25px;">What musical direction to pursue</div>',unsafe_allow_html=True)
-    st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.markdown('ITZY can also base their collaboration decision on genres since each of them exhibit high values on different audio features.',unsafe_allow_html=True)
+    st.markdown('<div style="font-weight: bold;font-size: 25px;">What musical direction to pursue</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color:gray;font-size: 185px;">ITZY can also base their collaboration decision on the genres\' notable audio features.</div>',unsafe_allow_html=True)
     
     colors = ['#C6793A','#77A9B4', '#565B7B','#B88F89']
 
@@ -515,6 +525,7 @@ elif my_page == 'Recommendations':
     st.plotly_chart(fig, use_container_width=True, config=config)
     
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
+    st.markdown('If ITZY wants to create a cheerful song, they can consider collaborating with someone under the R&B genre. If they want to create an energetic song, someone under the Pop genre might be a good fit. And if they want to create a danceable song, a collaboration with someone under the Rap genre is a fitting choice.',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 25px;">Song release activities on months of January to March are few to none, desirable for future ITZY releases</div>',unsafe_allow_html=True)
