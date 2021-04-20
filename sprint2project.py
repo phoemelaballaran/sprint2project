@@ -32,6 +32,7 @@ if my_page == 'Client: ITZY':
     a1,a2,a3 = st.beta_columns((4,1,4))
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     a1.markdown('<iframe src="https://open.spotify.com/embed/artist/2KC9Qb60EaY0kW4eH68vr3" width=100% height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>',unsafe_allow_html=True)
+    a1.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     a3.markdown(" ITZY is a South Korean girl group formed by JYP Entertainment who debuted on February 2019. They currently have an almost 3.5 million monthly listeners on Spotify with already 3 EPs, 1 album, and 1 single album under their belt. They’re popularly known for their own brand of spunkiness and their relentless advocacy for being true to one’s self.")
     
     
@@ -58,7 +59,7 @@ if my_page == "Exploring ITZY's Spotify Data":
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     
     st.markdown('<div style="font-size: 25px;font-weight: bold;">ITZY is the 5th most streamed K-Pop girl group</div>',unsafe_allow_html=True)
-    st.markdown('<div style="color: gray; font-size: 25px;font-style: italic;">With 23M total streams for their charting songs</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color: gray; font-size: 18px;font-style: italic;">With 23M total streams for their charting songs</div>',unsafe_allow_html=True)
     top5 = df1.groupby('artist')[['streams']].sum().sort_values(by="streams", ascending=False).head(5).reset_index()
     top5.sort_values(by="streams", ascending=True, inplace=True)
     
