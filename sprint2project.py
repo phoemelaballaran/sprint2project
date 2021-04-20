@@ -501,7 +501,7 @@ elif my_page == 'Recommendations':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="font-weight: bold;font-size: 25px;">What musical direction to pursue</div>',unsafe_allow_html=True)
-    st.markdown('<div style="color:gray;font-size: 185px;">ITZY can also base their collaboration decision on the genres\' notable audio features.</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color:gray;font-size: 18px;">ITZY can also base their collaboration decision on the genres\' notable audio features.</div>',unsafe_allow_html=True)
     
     colors = ['#C6793A','#77A9B4', '#565B7B','#B88F89']
 
