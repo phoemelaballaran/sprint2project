@@ -94,8 +94,8 @@ if my_page == "Exploring ITZY's Spotify Data":
 
     fig.update_traces(line=dict(color='#B88F89', width=2))
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
-                      xaxis = {'title': 'Date', 'titlefont' : dict(size = 16), 'fixedrange':True},
-                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16), 'fixedrange':True},
+                      xaxis = {'title': 'Date', 'titlefont' : dict(size = 16), 'fixedrange':True, 'gridcolor':'#D9D9D9'},
+                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16), 'fixedrange':True, 'gridcolor':'#D9D9D9'},
                       margin=dict(l=5, r=5, b=5, t=25, pad=15), font=dict(size=14),
                       hoverlabel = dict(font=dict(color='white'))
                          )
