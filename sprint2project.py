@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 
 #-----Start of Set Up-----#
 
-st.set_page_config(page_title='ITZY', page_icon = '', initial_sidebar_state = 'auto')
+st.set_page_config(page_title='ITZY', page_icon = '', initial_sidebar_state = 'auto',layout="wide")
 
 my_page = st.sidebar.radio('Contents',['About ITZY',"Exploring ITZY's Spotify Data",'Widen ITZY\'s Listenership','Spotlighting ITZY', 'Recommendations','The Team']) # creates sidebar #
 
