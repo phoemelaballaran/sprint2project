@@ -118,7 +118,7 @@ if my_page == "Exploring ITZY's Spotify Data":
     
     st.plotly_chart(fig, use_container_width=True)
     
-    st.markdown("Through our further EDA, we saw that the streams for ITZY’s charting songs increase with every EP or album release during the dates of 12 February 2019, 29 July 2019, 9 March 2020, and 17 August 2020. That got us wondering what is it about ITZY’s songs that made people want to listen to them? What’s their difference with the other K-Pop girl groups mentioned earlier?")
+    st.markdown("Through our further EDA, we saw that the streams for ITZY’s charting songs increase with every EP or album release (denoted by black dots on the chart). That got us wondering what is it about ITZY’s songs that made people want to listen to them? What’s their difference with the other K-Pop girl groups mentioned earlier?")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     
