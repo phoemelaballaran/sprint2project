@@ -11,14 +11,14 @@ warnings.filterwarnings('ignore')
 
 st.set_page_config(page_title='ITZY', page_icon = '', initial_sidebar_state = 'auto')
 
-my_page = st.sidebar.radio('Contents',['Client: ITZY',"Exploring ITZY's Spotify Data",'Part 1: Widen Listenership','Part 2: Spotlighting ITZY', 'Recommendations','The Team']) # creates sidebar #
+my_page = st.sidebar.radio('Contents',['About ITZY',"Exploring ITZY's Spotify Data",'Widen ITZY\'s Listenership','Spotlighting ITZY', 'Recommendations','The Team']) # creates sidebar #
 
 #-----End of Set Up-----#
 
 
-#-----Start of Page 1 (Client: ITZY)-----#
+#-----Start of Page 1 (About ITZY)-----#
 
-if my_page == 'Client: ITZY':
+if my_page == 'About ITZY':
 
     st.title("Making ITZY the Next Biggest K-Pop Girl Group")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
@@ -36,7 +36,7 @@ if my_page == 'Client: ITZY':
     a3.markdown(" ITZY is a South Korean girl group formed by JYP Entertainment who debuted on February 2019. They currently have an almost 3.5 million monthly listeners on Spotify with already 3 EPs, 1 album, and 1 single album under their belt. They’re popularly known for their own brand of spunkiness and their relentless advocacy for being true to one’s self.")
     
     
-#-----End of Page 1 (Client: ITZY)-----#
+#-----End of Page 1 (About ITZY)-----#
 
 #-----Start of Page 2 (Exploring ITZY's Spotify Data)-----#
 
@@ -66,16 +66,20 @@ if my_page == "Exploring ITZY's Spotify Data":
     
     fig = px.bar(top5, x="streams", y="artist", orientation='h', height=350,
                  text=top5["streams"].apply(lambda x: numerize.numerize(x)))
+    
+    colors = ['#E0B336'] * 5
+    colors[0] = '#B88F89'
 
-    fig.update_traces(marker=dict(color=['#B88F89','#d9d9d9','#d9d9d9','#d9d9d9','#d9d9d9']), textposition='outside',
-                      textfont=dict(size=14, color=['#B88F89','#999999','#999999','#999999','#999999']), width = 0.65)
+    fig.update_traces(marker=dict(color=colors), textposition='outside',
+                      textfont=dict(size=14, color=colors), width = 0.65)
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0,300000000],
-                               'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
-                      yaxis = {'title': '', 'showgrid' : False, 'zeroline': False, 'fixedrange':True},
-                      margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999'),
+                               'showgrid' : False,'fixedrange':True,'zeroline': False,
+                               'titlefont' : dict(color = "#999999", size = 16)},
+                      yaxis = {'title': '', 'showgrid' : False, 'fixedrange':True},
+                      margin=dict(l=0, r=0, b=15, t=25, pad=15), font=dict(size=14)
                      )
     
     config={'displayModeBar': False}
@@ -89,17 +93,31 @@ if my_page == "Exploring ITZY's Spotify Data":
     
     st.markdown('<div style="text-align: left;font-size: 25px;font-weight: bold;">Streams for ITZY’s charting songs increase with every EP/album release</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.markdown('<div style="color: gray; font-size: 15px;font-style: italic;">Hover over the plotted line to view the number of streams on a given day</div>',unsafe_allow_html=True)
+    st.markdown('<div style="color: gray; font-size: 16px;font-style: italic;">Hover over the plotted line to view the number of streams on a given day</div>',unsafe_allow_html=True)
+    dates = ["2019-02-13","2019-07-29","2020-03-09","2020-08-17"]
+    plots = df0[(df0['date'] == dates[0]) | (df0['date'] == dates[1]) | (df0['date'] == dates[2]) | (df0['date'] == dates[3])]
+    plots['album'] = ['It\'z Different', 'It\'z ICY', 'It\'z Me', 'Not Shy']
+
     fig = px.line(df0, x='date', y="streams")
 
-    fig.update_traces(line=dict(color='#B88F89', width=2))
+    fig.update_traces(line=dict(color='#B88F89', width=2),
+                      hovertemplate = "<br>".join(["%{x}", "%{y} streams<br><extra></extra>"]))
+
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
-                      xaxis = {'title': 'Date', 'titlefont' : dict(size = 16), 'fixedrange':True, 'gridcolor':'#D9D9D9'},
-                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16), 'fixedrange':True, 'gridcolor':'#D9D9D9'},
+                      xaxis = {'title': '', 'titlefont' : dict(size = 16), 'fixedrange':True,
+                               'gridcolor':'#D9D9D9'},
+                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16),
+                               'fixedrange':True, 'gridcolor':'#D9D9D9', 'zerolinecolor':'#D9D9D9'},
                       margin=dict(l=5, r=5, b=5, t=25, pad=15), font=dict(size=14),
-                      hoverlabel = dict(font=dict(color='white'))
+                      hoverlabel=dict(bgcolor="#FAFAFA", font_size=15)
                          )
+
+    fig.add_scatter(x = plots.date, y = plots.streams, mode = 'markers + text', marker = {'color':'#424242', 'size':10},
+                    showlegend = False, text = plots['album'], textposition='bottom center',
+                    hovertemplate = "<br>".join(["%{text}","%{x}", "%{y} streams<br><extra></extra>"]))
+    
     st.plotly_chart(fig, use_container_width=True)
+    
     st.markdown("Through our further EDA, we saw that the streams for ITZY’s charting songs increase with every EP or album release during the dates of 12 February 2019, 29 July 2019, 9 March 2020, and 17 August 2020. That got us wondering what is it about ITZY’s songs that made people want to listen to them? What’s their difference with the other K-Pop girl groups mentioned earlier?")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
@@ -117,8 +135,9 @@ if my_page == "Exploring ITZY's Spotify Data":
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Danceability of Charting Songs', 'range': [0, 1],
-                               'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                               'showticklabels' : True, 'showgrid' : False,'zeroline': False,
+                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True,
+                              'showline':True, 'linecolor':'#D9D9D9',},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                      )
@@ -138,15 +157,19 @@ if my_page == "Exploring ITZY's Spotify Data":
 
     fig = px.bar(energy, x="energy", y="artist", orientation='h', height=350,
                  text=energy["energy"].apply(lambda x: '{0:1.2f}'.format(x)))
+    
+    colors = ['#E0B336'] * 5
+    colors[4] = '#B88F89'
 
-    fig.update_traces(marker=dict(color=['#d9d9d9','#d9d9d9','#d9d9d9','#d9d9d9','#B88F89']), textposition='outside',
-                      textfont=dict(size=14,color=['#999999','#999999','#999999','#999999','#B88F89']), width = 0.65)
+    fig.update_traces(marker=dict(color=colors), textposition='outside',
+                      textfont=dict(size=14,color=colors), width = 0.65)
 
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Energy of Charting Songs', 'range': [0, 1],
-                               'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                               'showgrid' : False,'zeroline': False,'fixedrange':True,
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999'),
+                               'titlefont' : dict(color = "#999999", size = 16)},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14),
                      )
@@ -166,15 +189,18 @@ if my_page == "Exploring ITZY's Spotify Data":
 
     fig = px.bar(valence, x="valence", y="artist", orientation='h', height=350,
                  text=valence["valence"].apply(lambda x: '{0:1.2f}'.format(x)))
+    
+    colors = ['#E0B336'] * 5
+    colors[2] = '#B88F89'
 
-    fig.update_traces(marker=dict(color=['#d9d9d9','#d9d9d9','#B88F89','#d9d9d9','#d9d9d9']), textposition='outside',
-                      textfont=dict(size=14, color=['#999999','#999999','#B88F89','#999999','#999999']), width = 0.65)
-
+    fig.update_traces(marker=dict(color=colors), textposition='outside',
+                      textfont=dict(size=14, color=colors), width = 0.65)
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Valence of Charting Songs', 'range': [0, 1],
-                               'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                               'showgrid' : False,'zeroline': False, 'fixedrange':True,
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999'),
+                               'titlefont' : dict(color = "#999999", size = 16)},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                      )
@@ -195,9 +221,9 @@ if my_page == "Exploring ITZY's Spotify Data":
 #-----End of Page 2 (Exploring ITZY's Spotify Data)-----#
 
 
-#-----Start of Page 3 (Part 1: Widen Listenership)-----#
+#-----Start of Page 3 (Widen ITZY's Listenership)-----#
 
-elif my_page == 'Part 1: Widen Listenership':
+elif my_page == 'Widen ITZY\'s Listenership':
     
     @st.cache
     def load_data(URL):
@@ -305,8 +331,9 @@ elif my_page == 'Part 1: Widen Listenership':
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0, 110000000],
-                               'showticklabels' : False, 'showgrid' : False, 'zeroline': False,
-                               'titlefont' : dict(color = "#C6793A", size = 16), 'fixedrange':True},
+                               'showgrid' : False, 'zeroline': False,'fixedrange':True,
+                               'titlefont' : dict(color = "#999999", size = 16),
+                              'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999')},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=10,t=25, pad=15), font=dict(size=14)
                      )
@@ -357,8 +384,9 @@ elif my_page == 'Part 1: Widen Listenership':
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0, 110000000],
-                               'showticklabels' : False, 'showgrid' : False, 'zeroline': False,
-                               'titlefont' : dict(color = "#77A9B4", size = 16), 'fixedrange':True},
+                               'showgrid' : False, 'zeroline': False, 'fixedrange':True,
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999'),
+                               'titlefont' : dict(color = "#999999", size = 16)},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0,t=25, pad=15), font=dict(size=14)
                      )
@@ -408,8 +436,9 @@ elif my_page == 'Part 1: Widen Listenership':
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0, 110000000],
-                               'showticklabels' : False, 'showgrid' : False, 'zeroline': False,
-                               'titlefont' : dict(color = "#565B7B", size = 16), 'fixedrange':True},
+                               'showgrid' : False, 'zeroline': False, 'fixedrange':True,
+                               'titlefont' : dict(color = "#999999", size = 16),
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999')},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=10,t=25, pad=15), font=dict(size=14)
                      )
@@ -417,10 +446,13 @@ elif my_page == 'Part 1: Widen Listenership':
     config={'displayModeBar': False}
 
     st.plotly_chart(fig, use_container_width=True, config=config)
+    
+#-----End of Page 3 (Widen ITZY's Listenership)-----#    
+    
 
-#-----Start of Page 4 (Part 2: Create a Spotlight)-----#
+#-----Start of Page 4 (Spotlighting ITZY)-----#
 
-elif my_page == 'Part 2: Spotlighting ITZY':
+elif my_page == 'Spotlighting ITZY':
     st.title("Spotlighting ITZY")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.image('images/spotlighting itzy.png',use_column_width=True)
@@ -431,7 +463,8 @@ elif my_page == 'Part 2: Spotlighting ITZY':
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 25px;">Other most streamed K-Pop girl groups tend to release their songs on Spotify during April onwards</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.image('images/Timeline Top4.png',use_column_width=True)
+    a1,a2 = st.beta_columns((4,1))
+    a1.image('images/Timeline Top4.png',use_column_width=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown("According to our data, the other most streamed K-Pop girl groups tend to release their songs on Spotify during April onwards (with the exception of MOMOLAND). Upon seeing this pattern we wanted to see how this  contrast that with ITZY’s past releases. ")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
@@ -440,13 +473,14 @@ elif my_page == 'Part 2: Spotlighting ITZY':
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 25px;">ITZY’s previous release dates do not coincide with other K-Pop girl groups aside from the ‘Not Shy’ release</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.image('images/Timeline ITZY.png',use_column_width=True)
+    b1,b2 = st.beta_columns((4,1))
+    b1.image('images/Timeline ITZY.png',use_column_width=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown("We saw that ITZY released their debut album on February 2019 and another EP on March 2020, which are outside the April to December period mentioned earlier—however two of their releases were within that period.")
     
 
     
-#-----End of Page 4 (Part 2: Create a Spotlight)-----#
+#-----End of Page 4 (Spotlighting ITZY)-----#
 
 
 #-----Start of Page 5 (Recommendations)-----#
@@ -514,8 +548,9 @@ elif my_page == 'Recommendations':
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False, barmode='group',
                   xaxis = {'title': 'Audio Features Value', 'range': [0, 1],
-                           'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                           'titlefont' : dict(size = 16), 'fixedrange':True},
+                           'showticklabels' : True, 'showgrid' : False,'zeroline': False,
+                           'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999'),
+                           'titlefont' : dict(color = '#999999', size = 16), 'fixedrange':True},
                   yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                   margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                  )
@@ -531,7 +566,8 @@ elif my_page == 'Recommendations':
     st.markdown('<div style="text-align: left; font-weight: bold;font-size: 25px;">Song release activities on months of January to March are few to none, desirable for future ITZY releases</div>',unsafe_allow_html=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
-    st.image('images/Timeline Empty.png',use_column_width=True)
+    f1,f2 = st.beta_columns((4,1))
+    f1.image('images/Timeline Empty.png',use_column_width=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) # space #
     st.markdown('ITZY’s management team can consider doing future releases on the months of January to March, as data from previous years show that release activities from other most streamed K-Pop girl groups tend to be few to none.',unsafe_allow_html=True)
     
