@@ -94,8 +94,8 @@ if my_page == "Exploring ITZY's Spotify Data":
 
     fig.update_traces(line=dict(color='#B88F89', width=2))
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)',
-                      xaxis = {'title': 'Date', 'titlefont' : dict(size = 16)},
-                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16)},
+                      xaxis = {'title': 'Date', 'titlefont' : dict(size = 16), 'fixedrange':True},
+                      yaxis = {'title': 'Number of Streams','titlefont' : dict(size = 16), 'fixedrange':True},
                       margin=dict(l=5, r=5, b=5, t=25, pad=15), font=dict(size=14),
                       hoverlabel = dict(font=dict(color='white'))
                          )
@@ -118,8 +118,8 @@ if my_page == "Exploring ITZY's Spotify Data":
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Danceability of Charting Songs', 'range': [0, 1],
                                'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                      )
     
@@ -146,8 +146,8 @@ if my_page == "Exploring ITZY's Spotify Data":
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Energy of Charting Songs', 'range': [0, 1],
                                'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14),
                      )
     
@@ -174,8 +174,8 @@ if my_page == "Exploring ITZY's Spotify Data":
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Valence of Charting Songs', 'range': [0, 1],
                                'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                      )
     
@@ -306,8 +306,8 @@ elif my_page == 'Part 1: Widen Listenership':
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0, 110000000],
                                'showticklabels' : False, 'showgrid' : False, 'zeroline': False,
-                               'titlefont' : dict(color = "#C6793A", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                               'titlefont' : dict(color = "#C6793A", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=10,t=25, pad=15), font=dict(size=14)
                      )
 
@@ -358,8 +358,8 @@ elif my_page == 'Part 1: Widen Listenership':
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0, 110000000],
                                'showticklabels' : False, 'showgrid' : False, 'zeroline': False,
-                               'titlefont' : dict(color = "#77A9B4", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                               'titlefont' : dict(color = "#77A9B4", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0,t=25, pad=15), font=dict(size=14)
                      )
 
@@ -409,8 +409,8 @@ elif my_page == 'Part 1: Widen Listenership':
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0, 110000000],
                                'showticklabels' : False, 'showgrid' : False, 'zeroline': False,
-                               'titlefont' : dict(color = "#565B7B", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                               'titlefont' : dict(color = "#565B7B", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=10,t=25, pad=15), font=dict(size=14)
                      )
 
@@ -515,8 +515,8 @@ elif my_page == 'Recommendations':
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False, barmode='group',
                   xaxis = {'title': 'Audio Features Value', 'range': [0, 1],
                            'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                           'titlefont' : dict(size = 16)},
-                  yaxis = {'title': '', 'showgrid' : False,'zeroline': False},
+                           'titlefont' : dict(size = 16), 'fixedrange':True},
+                  yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                   margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                  )
 
