@@ -24,7 +24,7 @@ if my_page == 'About ITZY':
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     st.image('images/ITZY.png',use_column_width=True)
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
-    st.markdown("Our group’s hypothetical client is ITZY’s management team. In this project, we helped them with strategizing on how to make ITZY the next biggest K-Pop girl group. The ways we thought of doing that is by (1) widening their listenership and (2) creating a spotlight on ITZY.")
+    st.markdown("Our group’s hypothetical client is ITZY’s management team. In this project, we wanted to help them with strategizing on how to make ITZY the next biggest K-Pop girl group. The ways we thought of doing that is by (1) widening their listenership and (2) creating a spotlight on ITZY.")
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     st.markdown('<div style="color: transparent;">.</div>',unsafe_allow_html=True) #space
     st.markdown('<div style="text-align: left;font-size: 20px;font-weight: bold;">Who is ITZY?</div>',unsafe_allow_html=True)
