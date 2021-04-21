@@ -138,7 +138,7 @@ if my_page == "Exploring ITZY's Spotify Data":
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Danceability of Charting Songs', 'range': [0, 1],
                                'showgrid' : False,'zeroline': False,'fixedrange':True,
-                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999')
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999'),
                                'titlefont' : dict(color = "#999999", size = 16)},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
