@@ -73,8 +73,8 @@ if my_page == "Exploring ITZY's Spotify Data":
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Total Streams for Charting Songs', 'range': [0,300000000],
                                'showticklabels' : False, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16)},
-                      yaxis = {'title': '', 'showgrid' : False, 'zeroline': False},
+                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True},
+                      yaxis = {'title': '', 'showgrid' : False, 'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                      )
     
