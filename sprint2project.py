@@ -128,16 +128,18 @@ if my_page == "Exploring ITZY's Spotify Data":
     
     fig = px.bar(dance, x="danceability", y="artist", orientation='h', height=350,
                  text=dance["danceability"].apply(lambda x: '{0:1.2f}'.format(x)))
-
-    fig.update_traces(marker=dict(color=['#d9d9d9','#d9d9d9','#d9d9d9','#d9d9d9','#B88F89']), textposition='outside',
-                      textfont=dict(size=14, color=['#999999','#999999','#999999','#999999','#B88F89']), width = 0.65)
-
+    
+    colors = ['#E0B336'] * 5
+    colors[4] = '#B88F89'
+    
+    fig.update_traces(marker=dict(color=colors), textposition='outside',
+                      textfont=dict(size=14, color=colors), width = 0.65)
 
     fig.update_layout(plot_bgcolor='rgba(0,0,0,0)', paper_bgcolor='rgba(0,0,0,0)', hovermode=False,
                       xaxis = {'title': 'Average Danceability of Charting Songs', 'range': [0, 1],
-                               'showticklabels' : True, 'showgrid' : False,'zeroline': False,
-                               'titlefont' : dict(color = "#B88F89", size = 16), 'fixedrange':True,
-                              'showline':True, 'linecolor':'#D9D9D9',},
+                               'showgrid' : False,'zeroline': False,'fixedrange':True,
+                               'showline':True, 'linecolor':'#999999', 'tickfont':dict(color= '#999999')
+                               'titlefont' : dict(color = "#999999", size = 16)},
                       yaxis = {'title': '', 'showgrid' : False,'zeroline': False, 'fixedrange':True},
                       margin=dict(l=0, r=0, b=0, t=25, pad=15), font=dict(size=14)
                      )
