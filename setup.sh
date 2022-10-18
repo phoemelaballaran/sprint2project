@@ -1,5 +1,6 @@
 mkdir -p ~/.streamlit/
 
+
 echo "[theme]
 primaryColor='#b88f89'
 backgroundColor='#fafafa'
