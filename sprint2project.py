@@ -13,6 +13,20 @@ st.set_page_config(page_title='ITZY', page_icon = '', initial_sidebar_state = 'a
 
 my_page = st.sidebar.radio('Contents',['About ITZY',"Exploring ITZY's Spotify Data",'Widen ITZY\'s Listenership','Spotlighting ITZY', 'Recommendations','The Team']) # creates sidebar #
 
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        color: #fafafa;
+    }
+   .sidebar .sidebar-content {
+        color: #fafafa;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 #-----End of Set Up-----#
 
 
