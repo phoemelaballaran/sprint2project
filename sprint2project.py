@@ -17,10 +17,10 @@ st.markdown(
     """
     <style>
     .reportview-container {
-        color: #fafafa;
+        background-color: #fafafa;
     }
    .sidebar .sidebar-content {
-        color: #fafafa;
+        background-color: #fafafa;
     }
     </style>
     """,
